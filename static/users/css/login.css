@@ -1,0 +1,40 @@
+.form {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    text-align: center;
+}
+#big-text {
+    color: purple;
+    margin-top: 10px;
+}
+#small-text {
+    color: blue;
+    margin-bottom: 10px;
+}
+#small-text:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+input, .form button {
+    background-color: white;
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    padding: 4px;
+    border: 2px solid purple;
+}
+
+.form button {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.form button:hover {
+    cursor: pointer;
+    background: #ddd;
+}

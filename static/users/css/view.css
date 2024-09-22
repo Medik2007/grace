@@ -1,0 +1,43 @@
+.user-info {
+    background-color: #ddd;
+    padding: 15px;
+    margin-top: -20px;
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+}
+.logout {
+    padding-top: 10px;
+    width: fit-content;
+}
+
+.delivery {
+    margin: 40px 30px 80px 30px;
+}
+.delivery-name {
+    display: inline;
+    margin-left: 10px;
+}
+.all_orders {
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+}
+.order {
+    width: 220px;
+    display: flex; 
+    flex-direction: column;
+    gap: 10px;
+}
+
+.status-info {
+    margin-left: 5px;
+    padding: 4px 11px 4px 11px;
+    font-weight: bolder;
+    font-size: 18px; 
+    border-radius: 50px;
+    background-color: #ddd;
+}
+.status-info:hover {
+    background-color: #bbb;
+}

@@ -1,0 +1,96 @@
+{% extends 'dress/menu.html' %}
+{% load static %}
+
+{% block head %}
+    <meta name="referrer" content="origin" />
+    <script type="text/javascript" src="{% static '/dress/js/bucket.js' %}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/dress/css/bucket.css' %}">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" charset="utf-8"></script>
+{% endblock head %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="items" id="items">
+{% for order in all_orders %}
+
+    <div class="item" id="item-{{order.dress.id}},{{order.color.id}},{{order.size.id}},{{order.model.id}}">
+
+        <a style="width: 185px;" href="/{{order.dress.id}}?c={{order.color.id}}&s={{order.size.id}}&m={{order.model.id}}">
+            <img src="{{ order.color.img.url }}" height="100%">
+        </a>
+
+        <div class="info">
+            <h2>{{ order.dress.name }}</h2>
+            <div class="parameters">
+                <button class="button" style="background: #bbb;">{{ order.color.name }}</button>
+                <button class="button" style="background: #bbb;">{{ order.size.size }}</button>
+                <button class="button" style="background: #bbb;">{{ order.model.name }}</button>
+                <h3 class="text">В корзине:</h3>
+                <div class="bucket-edit">
+                    <button class="button" onclick="bucket('minus','{{order.dress.id}}','{{order.color.id}}','{{order.size.id}}','{{order.model.id}}')">Убавить</button>
+                    <h3 style="margin-top: 3px;" id="bucket-count"></h3>
+                    <button class="button" onclick="bucket('plus','{{order.dress.id}}','{{order.color.id}}','{{order.size.id}}','{{order.model.id}}')">Добавить</button>
+                </div>
+                <div class="price">
+                    <p class="text" id="big-price-text"></p>
+                    <p class="text" id="small-price-text"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bucket">
+        </div>
+
+        <p class="hide" id="id">{{ order.dress.id }}</p>
+        <p class="hide" id="color">{{ order.color.id }}</p>
+        <p class="hide" id="size">{{ order.size.id }}</p>
+        <p class="hide" id="model">{{ order.model.id }}</p>
+        <p class="hide" id="small-price">{{ order.model.price }}</p>
+        <p class="hide" id="big-price">{{ order.model.price }}</p>
+
+    </div>
+
+{% endfor %}
+</div>
+<div class="checkout">
+    {% if user.is_authenticated %}
+        <form class="checkout-form">
+            <div class="input">
+                <label>Почта заказчика</label>
+                <input disabled value="{{ user.username }}" type="text">
+            </div>
+            <div class="input">
+                <label>ФИО заказчика</label>
+                <input disabled value="{{ user.name }}" type="text">
+            </div>
+            <div class="input">
+                <label>Телефон заказчика</label>
+                <input disabled value="{{ user.phone }}" type="text">
+            </div>
+            <div class="input">
+                <label>Адрес получения</label>
+                <input disabled id="adress" type="text" value="ул. Коммунальная 21А стр 29, Тамбов">
+            </div>
+        </form>
+        <p id="end-price" class="end-price">Итоговая цена:</p>
+        <button onclick="order()" class="button buy-button">Сделать Заказ</button>
+    {% else %}
+        <p id="end-price" class="end-price" style="margin:0">Итоговая цена:</p>
+        <p class="end-price">Вы должны зарегестрироваться чтобы сделать заказ</p>
+        <button onclick="window.location.href = '/user';" class="button buy-button">Регистрация</button>
+    {% endif %}
+</div>
+
+</div>
+
+<div id="cdek-map" style="width:800px;height:600px"></div>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () =>
+    new window.CDEKWidget({ from: 'Тамбов', root: 'cdek-map', apiKey: 'd90168b6-e285-4154-be1a-993a71979fb3', servicePath: '/service.php', defaultLocation: 'Тамбов' }));
+</script>
+
+
+{% endblock content %}

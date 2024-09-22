@@ -1,0 +1,50 @@
+{% extends 'dress/menu.html' %}
+{% load static %}
+
+{% block head %}
+    <script type="text/javascript" src="{% static '/dress/js/index.js' %}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/dress/css/index.css' %}">
+{% endblock head %}
+
+{% block content %}
+<section class="container">
+    {% for dress in all_dress %}
+
+
+    <article class="item" id="dress-{{ dress.id }}">
+
+        <div class="item-button" onclick="click_item('{{ dress.id }}')">
+            <img id="image-{{ dress.id }}" src="{{ dress.colors.all.0.img.url }}" alt="{{ dress.name }}" class="item-img">
+            <h1>{{ dress.name }}</h1>
+        </div>
+
+        <div class="button-container">
+            <div class="button-list">
+                {% for color in dress.colors.all %}
+                    <p class="button" id="button-{{ color.id }}" onclick="change_color('{{ color.id }}', '{{ dress.id }}', '{{ color.img.url }}')">{{ color.name }}</p>
+                {% endfor %}
+            </div>
+            <div class="button-list">
+                {% for size in dress.sizes.all %}
+                <p class="button" id="button-{{ size.id }}" onclick="change_size('{{ size.id }}', '{{ dress.id }}')">{{ size.size }}</p>
+                {% endfor %}
+            </div>
+            <div class="button-list">
+                {% for model in dress.models.all %}
+                    <p class="button" id="button-{{ model.id }}" onclick="change_model('{{ model.id }}', '{{ dress.id }}', '{{ model.price }}')">{{ model.name }}</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <h2 id="price-{{ dress.id }}" class="item-price">{{ dress.models.all.0.price }}</h2>
+
+        <p class="hide" id="color-{{ dress.id }}">{{ dress.colors.all.0.id }}</p>
+        <p class="hide" id="size-{{ dress.id }}">{{ dress.sizes.all.0.id }}</p>
+        <p class="hide" id="model-{{ dress.id }}">{{ dress.models.all.0.id }}</p>
+
+    </article>
+
+
+    {% endfor %}
+</section>
+{% endblock content %}

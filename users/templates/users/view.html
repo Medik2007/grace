@@ -1,0 +1,60 @@
+{% extends 'dress/menu.html' %}
+{% load static %}
+
+{% block head %}
+    <script type="text/javascript" src="{% static '/users/js/view.js' %}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/users/css/view.css' %}">
+{% endblock head %}
+
+{% block content %}
+
+<div class="user-info">
+    <h2>{{ user.name }}</h2>
+    <h3>{{ user.username }}</h3>
+    <h3>{{ user.phone }}</h3>
+    <a class="logout" href="/logout">Выйти</a>
+</div>
+
+{% for delivery in deliveries %}
+
+    <div class="delivery">
+        <h2 class="delivery-name">Заказ от {{ delivery.date }} --- </h2>
+        {% if delivery.state == 1 %}
+            <h2 style="color: green; display: inline;">Оформлен</h2>
+            <button class="status-info" title="Заказ оформлен. Скоро он будет принят и мы начнем производство. Мы сообщим вам когда заказ будет принят.">?</button>
+        {% elif delivery.state == 2 %}
+            <h2 style="color: green; display: inline;">Принят</h2>
+            <button class="status-info" title="Заказ принят и мы начали производство. Мы сообщим вам когда он будет готов и мы передадим его в доствку.">?</button>
+        {% elif delivery.state == 3 %}
+            <h2 style="color: green; display: inline;">Произведен</h2>
+            <button class="status-info" title="Заказ произведен и теперь доставляется к вам! Мы сообщим вам когда он достигнет своей цели.">?</button>
+        {% elif delivery.state == 4 %}
+            <h2 style="color: green; display: inline;">Доставлен</h2>
+            <button class="status-info" title="Заказ успешно доставлен и принят! Спасибо что выбрали Чарующую Грацию!">?</button>
+        {% elif delivery.state == 0 %}
+            <h2 style="color: darkred; display: inline;">Отменен</h2>
+            <button class="status-info" title="Заказ был отменен. Свяжитесь с нами если произошла ошибка.">?</button>
+        {% endif %}
+        <div class="all_orders">
+        {% for order in delivery.orders.all %}
+            <div class="order">
+                <a style="width: 100%;" href="/{{order.dress.id}}?c={{order.color.id}}&s={{order.size.id}}&m={{order.model.id}}">
+                    <img src="{{ order.color.img.url }}" style="width: 100%;">
+                </a>
+                <h3>{{order.amount}}x {{ order.dress.name }}</h3>
+                <div class="parameters">
+                    <button class="button" style="background: #ddd;">{{ order.color.name }}</button>
+                    <button class="button" style="background: #ddd;">{{ order.size.size }}</button>
+                    <button class="button" style="background: #ddd;">{{ order.model.name }}</button>
+                    <div class="price">
+                        <p class="text" id="big-price-text"></p>
+                        <p class="text" id="small-price-text"></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock content %}

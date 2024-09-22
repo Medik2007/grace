@@ -1,0 +1,62 @@
+{% extends 'dress/menu.html' %}
+{% load static %}
+
+{% block head %}
+    <script type="text/javascript" src="{% static '/dress/js/view.js' %}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/dress/css/view.css' %}">
+{% endblock head %}
+
+{% block content %}
+
+<div class="container">
+    <div class="images">
+        <div class="image-left">
+        {% for color in dress.colors.all %}
+            <button onclick="change_color('{{ color.id }}', '{{ color.img.url }}')">
+                <img class="img img-button" src="{{ color.img.url }}" width="150px">
+            </button>
+        {% endfor %}
+        </div>
+        <img class="img" id="main-image" src="{{ dress.colors.all.0.img.url }}" height="100%">
+        <div class="image-right">
+            <h1 class="image-title">{{ dress.name }}</h1>
+            {% if dress.desc %}
+                <p class="description">{{ dress.desc }}</p>
+            {% endif %}
+            <p>Цвет:</p>
+            <div class="button-list">
+                {% for color in dress.colors.all %}
+                    <p class="button" id="button-{{ color.id }}" onclick="change_color('{{ color.id }}', '{{ color.img.url }}')">{{ color.name }}</p>
+                {% endfor %}
+            </div>
+            <p>Размер:</p>
+            <div class="button-list">
+                {% for size in dress.sizes.all %}
+                    <p class="button" id="button-{{ size.id }}" onclick="change_size('{{ size.id }}')">{{ size.size }}</p>
+                {% endfor %}
+            </div>
+            <p>Тип:</p>
+            <div class="button-list">
+                {% for model in dress.models.all %}
+                    <p class="button" id="button-{{ model.id }}" onclick="change_model('{{ model.id }}', '{{ model.price }}')">{{ model.name }}</p>
+                {% endfor %}
+            </div>
+            <div class="bucket">
+                <h2 class="bucket-text">Корзина:</h2>
+                <p id="price-text">{{ dress.models.all.0.price }}</p>
+                <div class="bucket-edit">
+                    <button type="button" class="bucket-buttons" onclick="bucket('minus')"><p>Убавить</p></button>
+                    <h2 class="bucket-text" id="bucket-count">...</h2>
+                    <button type="button" class="bucket-buttons" onclick="bucket('plus')"><p>Добавить</p></button>
+                </div>
+            </div>
+            <p class="hide" id="id">{{ dress.id }}</p>
+            <p class="hide" id="color">{{ dress.colors.all.0.id }}</p>
+            <p class="hide" id="size">{{ dress.sizes.all.0.id }}</p>
+            <p class="hide" id="model">{{ dress.models.all.0.id }}</p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

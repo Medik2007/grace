@@ -1,0 +1,23 @@
+{% extends 'dress/menu.html' %}
+{% load static %}
+
+{% block head %}
+    <script type="text/javascript" src="{% static '/users/js/login.js' %}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/users/css/login.css' %}">
+{% endblock head %}
+
+{% block content %}
+<div class="container">
+    <form class="form">
+        <h2 id="big-text">Регистрация</h2>
+        <p onclick="login()" id="small-text">Вход</p>
+        <input type="text" placeholder="ФИО" id="name">
+        <input type="text" placeholder="Почта" id="email">
+        <input type="text" placeholder="Номер Телефона" id="phone">
+        <input type="password" placeholder="Пароль" id="password">
+        <input type="password" placeholder="Повторите Пароль" id="repeat_password">
+        <button onclick="send(event)">Продолжить</button>
+        <p id="error" style="color: red;"></p>
+    </form>
+</div>
+{% endblock content %}
