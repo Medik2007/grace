@@ -1,33 +1,13 @@
 Options +ExecCGI
-
 AddHandler wsgi-script .py
-
-#RewriteEngine On
-
-#RewriteCond %{REQUEST_FILENAME} !-f
-
-#RewriteRule ^(.*)$ /wsgi.py/$1 [QSA,PT,L]
-
-
-
-# Enabling mod_rewrite, which is needed for Django and PHP
 RewriteEngine On
 
-# Redirect all requests to Django's wsgi.py (this handles Django)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ /wsgi.py/$1 [QSA,PT,L]
 
-# Serve PHP files in specific directories or the root
-
-# If the request is for a PHP file, process it with PHP
 <FilesMatch "\.php$">
     SetHandler application/x-httpd-php
 </FilesMatch>
 
-# Example: Handling PHP files under a specific directory (like /php/ for PHP content)
 RewriteCond %{REQUEST_URI} ^/php/
 RewriteRule . - [L]  # Allow PHP to be processed normally here
-
-# You can define specific PHP rules per directory or file, as needed.
-# PHP requests will pass through Apache's default PHP handler
-
