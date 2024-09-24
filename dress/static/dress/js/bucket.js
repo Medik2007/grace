@@ -45,8 +45,7 @@ function order() {
 
 set_btn();
 
-document.addEventListener('DOMContentLoaded', () =>
-let map = new window.CDEKWidget({
+map = new window.CDEKWidget({
     from: 'Тамбов',
     root: 'cdek-map',
     apiKey: 'd90168b6-e285-4154-be1a-993a71979fb3',
