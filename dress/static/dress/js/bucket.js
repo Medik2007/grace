@@ -58,6 +58,7 @@ map = new window.CDEKWidget({
     },
     onChoose(office) {
         console.log(office);
+        //
     },
 });
 
