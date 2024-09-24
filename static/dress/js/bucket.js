@@ -56,8 +56,8 @@ map = new window.CDEKWidget({
         office: false,
         door: true,
     },
-    onChoose() {
-        alert('Доставка выбрана');
+    onChoose(office) {
+        console.log(office);
     },
 });
 
