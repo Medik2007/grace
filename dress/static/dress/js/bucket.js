@@ -46,14 +46,20 @@ function order() {
 set_btn();
 
 document.addEventListener('DOMContentLoaded', () =>
-new window.CDEKWidget({
+let map = new window.CDEKWidget({
     from: 'Тамбов',
     root: 'cdek-map',
     apiKey: 'd90168b6-e285-4154-be1a-993a71979fb3',
     servicePath: '/service.php',
     defaultLocation: 'Тамбов',
+    popup: true,
     hideDeliveryOptions: {
         office: false,
         door: true,
     },
+    onChoose() {
+        alert('Доставка выбрана');
+    },
 }));
+
+map.open();
