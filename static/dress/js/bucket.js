@@ -59,6 +59,6 @@ map = new window.CDEKWidget({
     onChoose() {
         alert('Доставка выбрана');
     },
-}));
+});
 
 map.open();
