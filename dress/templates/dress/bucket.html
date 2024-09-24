@@ -74,6 +74,7 @@
                 <input disabled id="adress" type="text" value="ул. Коммунальная 21А стр 29, Тамбов">
             </div>
         </form>
+        <div id="cdek-map"></div>
         <p id="end-price" class="end-price">Итоговая цена:</p>
         <button onclick="order()" class="button buy-button">Сделать Заказ</button>
     {% else %}
@@ -85,12 +86,6 @@
 
 </div>
 
-<div id="cdek-map" style="width:800px;height:600px"></div>
-
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', () =>
-    new window.CDEKWidget({ from: 'Тамбов', root: 'cdek-map', apiKey: 'd90168b6-e285-4154-be1a-993a71979fb3', servicePath: '/service.php', defaultLocation: 'Тамбов' }));
-</script>
 
 
 {% endblock content %}

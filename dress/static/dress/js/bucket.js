@@ -43,4 +43,21 @@ function order() {
     send_data({act:"order", adress:adress}, order_response);
 }
 
+function create_map() {
+    document.addEventListener('DOMContentLoaded', () =>
+    new window.CDEKWidget({
+        from: 'Тамбов',
+        root: 'cdek-map',
+        apiKey: 'd90168b6-e285-4154-be1a-993a71979fb3',
+        servicePath: '/service.php',
+        defaultLocation: 'Тамбов',
+        hideDeliveryOptions: {
+            office: false,
+            door: true,
+        },
+    }));
+}
+
 set_btn();
+create_map();
+
