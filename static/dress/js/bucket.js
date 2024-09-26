@@ -57,7 +57,7 @@ map = new window.CDEKWidget({
         door: true,
     },
     onChoose(type, tariff, adress) {
-        console.log(adress);
+        console.log(adress.name + ' - ' + adress.region);
     },
 });
 
