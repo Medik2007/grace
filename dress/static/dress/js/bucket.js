@@ -56,9 +56,8 @@ map = new window.CDEKWidget({
         office: false,
         door: true,
     },
-    onChoose(office) {
+    onChoose() {
         console.log(office);
-        //
     },
 });
 
