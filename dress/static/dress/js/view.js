@@ -51,4 +51,3 @@ function change_size(id) {
 
 
 set_btn();
-set_price("price-text");
