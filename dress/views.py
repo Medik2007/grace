@@ -113,11 +113,3 @@ def service(request):
 
 
 
-
-
-
-
-
-
-
-
