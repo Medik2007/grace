@@ -69,9 +69,10 @@
                 <label>Телефон заказчика</label>
                 <input disabled value="{{ user.phone }}" type="text">
             </div>
-            <div class="input">
-                <label>Адрес получения</label>
-                <input disabled id="adress" type="text" value="ул. Коммунальная 21А стр 29, Тамбов">
+            <label>Адрес Получения (Пункт выдачи СДЭК)</label>
+            <div class="adress-div">
+                <input disabled id="adress" type="text">
+                <button onclick="open_map(event)">Выбрать Адрес</button>
             </div>
         </form>
         <div id="cdek-map"></div>

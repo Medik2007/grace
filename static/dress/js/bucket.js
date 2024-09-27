@@ -45,7 +45,7 @@ function order() {
 
 set_btn();
 
-map = new window.CDEKWidget({
+var map = new window.CDEKWidget({
     from: 'Тамбов',
     root: 'cdek-map',
     apiKey: 'd90168b6-e285-4154-be1a-993a71979fb3',
@@ -57,8 +57,11 @@ map = new window.CDEKWidget({
         door: true,
     },
     onChoose(type, tariff, adress) {
-        console.log(adress.name + ' - ' + adress.region);
+        document.getElementById('adress').value = adress.name + ' - ' + adress.region
     },
 });
 
-map.open();
+function open_map(e) {
+    e.preventDefault();
+    map.open();
+}
