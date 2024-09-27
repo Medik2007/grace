@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    justify-content: center;
 }
 @media screen and (max-width: 1450px) {
     .container {
@@ -78,6 +79,7 @@
         font-weight: bold;
     }
     .adress-div {
+        margin-top: -10px;
         display: flex;
         flex-direction: row;
         width: 100%;
@@ -93,6 +95,11 @@
             background-color: #BBBBBB;
         }
     }
+}
+
+label {
+    margin-left: 5px;
+    font-size: 14px;
 }
 
 .input {
