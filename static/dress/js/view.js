@@ -1,7 +1,5 @@
 function bucket_response(response) {
-    if (response['act'] != 'plus' && response['act'] != 'minus') {
-        document.getElementById('bucket-count').innerHTML = response['count'];
-    }
+    document.getElementById('bucket-count').innerHTML = response['count'];
 }
 function bucket(act) {
     id = document.getElementById(`id`).innerHTML;

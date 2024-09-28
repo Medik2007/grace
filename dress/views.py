@@ -54,9 +54,9 @@ def bucket_post(request):
 
     if bucket[order] < 1:
         del bucket[order]
-        response = JsonResponse({'act':request.POST['act'], 'count':0, 'order':order})
+        response = JsonResponse({'count':0, 'order':order})
     else:
-        response = JsonResponse({'act':request.POST['act'], 'count':bucket[order], 'order':order})
+        response = JsonResponse({'count':bucket[order], 'order':order})
 
     set_bucket_cookie(response, bucket)
     return response
