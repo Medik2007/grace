@@ -45,9 +45,9 @@
                 <h2 class="bucket-text">Корзина:</h2>
                 <p id="price-text">{{ dress.models.all.0.price }}</p>
                 <div class="bucket-edit">
-                    <button type="button" class="bucket-buttons" onclick="bucket('minus')"><p>Убавить</p></button>
+                    <button type="button" class="bucket-buttons" onclick="add_remove(-1, 'minus')"><p>Убавить</p></button>
                     <h2 class="bucket-text" id="bucket-count">...</h2>
-                    <button type="button" class="bucket-buttons" onclick="bucket('plus')"><p>Добавить</p></button>
+                    <button type="button" class="bucket-buttons" onclick="add_remove(1, 'plus')"><p>Добавить</p></button>
                 </div>
             </div>
             <p class="hide" id="id">{{ dress.id }}</p>
