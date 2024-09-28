@@ -97,8 +97,7 @@ def bucket(request):
                     order.delivery = delivery
                     order.save()
                 response = JsonResponse({'success':True})
-                expires = datetime.now(timezone.utc) + timedelta(days=365)
-                response.set_cookie('bucket', json.dumps([]), expires=expires)
+                response.delete_cookie('bucket')
                 return response
             else:
                 return JsonResponse({'success':False})
