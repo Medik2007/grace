@@ -8,9 +8,15 @@ function bucket(act) {
     model = document.getElementById(`model`).innerHTML;
     send_data({id:id, color:color, size:size, model:model, act:act}, bucket_response);
 }
-function add_remove(change, act) {
-    n = Number(document.getElementById('bucket-count'.innerHTML)) + change;
-    document.getElementById('bucket-count').innerHTML = n;
+function add_remove(act) {
+    if (act == 'plus') {
+        n = Number(document.getElementById('bucket-count').innerHTML) + 1;
+    } else {
+        n = Number(document.getElementById('bucket-count').innerHTML) - 1;
+    }
+    if (n >= 0) {
+        document.getElementById('bucket-count').innerHTML = n;
+    }
     bucket(act);
 }
 
