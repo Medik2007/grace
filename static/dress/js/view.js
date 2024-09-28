@@ -8,6 +8,11 @@ function bucket(act) {
     model = document.getElementById(`model`).innerHTML;
     send_data({id:id, color:color, size:size, model:model, act:act}, bucket_response);
 }
+function add_remove(change, act) {
+    n = Number(document.getElementById('bucket-count'.innerHTML)) + change;
+    document.getElementById('bucket-count').innerHTML = n;
+    bucket(act);
+}
 
 
 function url_vars()
